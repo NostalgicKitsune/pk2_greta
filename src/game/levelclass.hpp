@@ -50,6 +50,9 @@ enum {
     BLOCK_ANIM3 = 70,
     BLOCK_ANIM4 = 75,
 
+    BLOCK_CELL_DEAD = 106,
+    BLOCK_CELL_ALIVE = 107,
+
     BLOCK_DRIFT_LEFT = 140,
     BLOCK_DRIFT_RIGHT,
     BLOCK_SCROLL_UP,
@@ -196,6 +199,8 @@ class LevelClass {
     void Calculate_Edges();
 
     void SaveVersion15(PFile::Path path)const;
+
+    void StartLife();
 private:
     static void ReadTiles(PFile::RW& file,
         u8 compression,
@@ -218,5 +223,9 @@ private:
     void Animate_RollUp(int tiles);
     void Animate_WaterSurface(int tiles);
     void Animate_Water(int tiles, int water_tiles);
-    
+
+
+    void UpdateLife();
+    u8       life_buffer[PK2MAP_MAP_SIZE] = {0};
+    u8       life_started = false;
 };

@@ -54,6 +54,12 @@ void AddEventListener(int event_type, sol::object o){
     }
 }
 
+
+void StartLife(){
+    Game->level.StartLife();
+}
+
+
 void ExposeGameAPI(sol::state& lua){
 
     sol::table PK2_API = lua.create_table();
@@ -108,6 +114,9 @@ void ExposeGameAPI(sol::state& lua){
      * Show info
      */
     PK2_API["show_info"] = [](const std::string& text){ Game->Show_Info(text);};
+
+
+    PK2_API["start_life"] = StartLife;
 
     lua["_pk2_api"] = PK2_API;
 }

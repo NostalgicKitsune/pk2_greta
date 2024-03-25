@@ -751,6 +751,7 @@ void LevelClass::Animate_Water(int tiles, int water_tiles){
 	PDraw::drawimage_end(water_tiles);
 }
 
+
 void LevelClass::Animate_RollUp(int tiles){
 	u8 *buffer = NULL;
 	u32 width;
@@ -936,4 +937,70 @@ int LevelClass::DrawForegroundTiles(int kamera_x, int kamera_y){
 	tiles_animation_timer = 1 + tiles_animation_timer % 320;
 
 	return 0;
+}
+
+void mIncrementLifeBuffer(u8* buffer, int y, int x){
+	y = (y + PK2MAP_MAP_HEIGHT) % PK2MAP_MAP_HEIGHT;
+	x = (x + PK2MAP_MAP_WIDTH) % PK2MAP_MAP_WIDTH;
+
+	u32 index = u32(x+y*PK2MAP_MAP_WIDTH);
+	++buffer[index];
+}
+
+
+void LevelClass::StartLife(){
+	this->life_started = true;
+
+	for (int y = 0; y < PK2MAP_MAP_HEIGHT; y++)
+		for (int x = 0; x < PK2MAP_MAP_WIDTH; x++){
+
+			u32 index = x+y*PK2MAP_MAP_WIDTH;
+
+			u8 back  = this->background_tiles[index];
+			if(back==BLOCK_CELL_ALIVE){
+				this->foreground_tiles[index] = BLOCK_BARRIER_DOWN;
+			}
+		}
+}
+
+void LevelClass::UpdateLife(){
+	for (int y = 0; y < PK2MAP_MAP_HEIGHT; y++)
+		for (int x = 0; x < PK2MAP_MAP_WIDTH; x++)
+		{
+
+			u32 index = x+y*PK2MAP_MAP_WIDTH;
+
+			u8 back  = this->background_tiles[index];
+			if(back==BLOCK_CELL_ALIVE){
+				mIncrementLifeBuffer(life_buffer,  y-1, x-1);
+				mIncrementLifeBuffer(life_buffer,  y-1, x);
+				mIncrementLifeBuffer(life_buffer,  y-1, x+1);
+
+				mIncrementLifeBuffer(life_buffer,  y, x-1);
+				mIncrementLifeBuffer(life_buffer,  y, x+1);
+
+				mIncrementLifeBuffer(life_buffer,  y+1, x-1);
+				mIncrementLifeBuffer(life_buffer,  y+1, x);
+				mIncrementLifeBuffer(life_buffer,  y+1, x+1);
+			}
+		}
+
+	for (int y = 0; y < PK2MAP_MAP_HEIGHT; y++)
+		for (int x = 0; x < PK2MAP_MAP_WIDTH; x++){
+
+			u32 index = x+y*PK2MAP_MAP_WIDTH;
+
+			u8 back  = this->background_tiles[index];
+			u8 neighbours = this->life_buffer[index];
+			this->life_buffer[index] = 0;
+
+			if(back==BLOCK_CELL_ALIVE && neighbours !=2 && neighbours != 3){
+				this->background_tiles[index] = BLOCK_CELL_DEAD;
+				this->foreground_tiles[index] = 255;
+			}
+			else if(back==BLOCK_CELL_DEAD && neighbours == 3){
+				this->background_tiles[index] = BLOCK_CELL_ALIVE;
+				this->foreground_tiles[index] = BLOCK_BARRIER_DOWN;
+			}
+		}
 }

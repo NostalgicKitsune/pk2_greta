@@ -935,7 +935,7 @@ int LevelClass::DrawForegroundTiles(int kamera_x, int kamera_y){
 		PDraw::rotate_palette(224,239);
 	}
 
-	if(tiles_animation_timer%8 == 0){
+	if(this->life_started && tiles_animation_timer%10 == 0){
 		this->UpdateLife();
 	}
 

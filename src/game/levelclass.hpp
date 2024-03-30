@@ -52,6 +52,7 @@ enum {
 
     BLOCK_CELL_DEAD = 106,
     BLOCK_CELL_ALIVE = 107,
+    BLOCK_CELL_INACTIVE = 108,
 
     BLOCK_DRIFT_LEFT = 140,
     BLOCK_DRIFT_RIGHT,
@@ -200,7 +201,9 @@ class LevelClass {
 
     void SaveVersion15(PFile::Path path)const;
 
-    void StartLife();
+    void StartLife(int life_speed);
+    void PlaceRLE(PFile::Path path, int pos_x, int pos_y, int direction);
+
 private:
     static void ReadTiles(PFile::RW& file,
         u8 compression,
@@ -226,6 +229,8 @@ private:
 
 
     void UpdateLife();
+    void PlaceCell(u8 state, int x, int y);
+
     u8       life_buffer[PK2MAP_MAP_SIZE] = {0};
-    u8       life_started = false;
+    int      life_speed = 0;
 };

@@ -934,8 +934,10 @@ int LevelClass::DrawForegroundTiles(int kamera_x, int kamera_y){
 		PDraw::rotate_palette(224,239);
 	}
 
-	if(this->life_started && tiles_animation_timer%10 == 0){
-		this->UpdateLife();
+	if(this->life_speed>0){
+		if(tiles_animation_timer%life_speed==0){
+			this->UpdateLife();
+		}
 	}
 
 	tiles_animation_timer = 1 + tiles_animation_timer % 320;
@@ -952,8 +954,9 @@ void mIncrementLifeBuffer(u8* buffer, int y, int x){
 }
 
 
-void LevelClass::StartLife(){
-	this->life_started = true;
+void LevelClass::StartLife(int life_speed){
+	//this->life_started = true;
+	this->life_speed = life_speed;
 
 	for (int y = 0; y < PK2MAP_MAP_HEIGHT; y++)
 		for (int x = 0; x < PK2MAP_MAP_WIDTH; x++){
@@ -962,6 +965,10 @@ void LevelClass::StartLife(){
 
 			u8 back  = this->background_tiles[index];
 			if(back==BLOCK_CELL_ALIVE){
+				this->foreground_tiles[index] = BLOCK_BARRIER_DOWN;
+			}
+			else if(back==BLOCK_CELL_INACTIVE){
+				this->background_tiles[index] = BLOCK_CELL_ALIVE;
 				this->foreground_tiles[index] = BLOCK_BARRIER_DOWN;
 			}
 		}
@@ -1007,4 +1014,179 @@ void LevelClass::UpdateLife(){
 				this->foreground_tiles[index] = BLOCK_BARRIER_DOWN;
 			}
 		}
+}
+
+void LevelClass::PlaceCell(u8 state, int x, int y){
+	if(x>=0 && x < PK2MAP_MAP_WIDTH && y>=0 && y<PK2MAP_MAP_HEIGHT){
+		u32 index = x+y*PK2MAP_MAP_WIDTH;
+		u8 back = this->background_tiles[index];
+		
+		if(back==BLOCK_CELL_DEAD && state==BLOCK_CELL_ALIVE){
+						
+			this->background_tiles[index] = state;
+			this->foreground_tiles[index] = BLOCK_BARRIER_DOWN;
+		}
+		else if(back==BLOCK_CELL_ALIVE && state==BLOCK_CELL_DEAD){
+
+			this->background_tiles[index] = state;
+			this->foreground_tiles[index] = 255;
+		}
+	}
+}
+
+void LevelClass::PlaceRLE(PFile::Path path, int x, int y, int direction){
+
+	int dx = 1;
+	int dy = 1;
+
+	switch (direction)
+	{
+	case 1:
+		dx = 1;
+		dy = 1;
+		break;
+	case 2:
+		dx = -1;
+		dy = 1;
+		break;
+
+	case 3:
+		dx = -1;
+		dy = -1;
+		break;
+	
+	case 4:
+		dx = 1;
+		dy = -1;
+	default:
+		break;
+	}
+
+
+	PFile::RW rw = path.GetRW2("r");
+
+	char c1 = 0;
+	int state = 0;
+
+	int n = 0;
+	int orig_x = x;
+
+	while (rw.read(&c1, 1)){
+		
+		if(state!=1 && c1=='!')break;
+
+		/* code */
+		switch (state)
+		{
+		/**
+		 * @brief 
+		 * default
+		 */
+		case 0:{
+			/**
+			 * @brief
+			 * Numbers
+			 */
+			if(c1>='0' && c1<='9'){
+				state = 2;
+				n = c1 - '0';
+			}
+
+			/**
+			 * @brief
+			 * Ignore comments and metadata
+			 */
+			else if(c1=='#' || c1=='x' || c1=='y'){
+				state = 1;
+			}
+
+			/**
+			 * @brief 
+			 * New line
+			 */
+			else if(c1=='$'){
+				x = orig_x;
+				y+=dy;
+			}
+			/**
+			 * @brief 
+			 * Dead cell
+			 */
+			else if(c1=='b'){
+				this->PlaceCell(BLOCK_CELL_DEAD, x, y);
+				x+=dx;				
+			}
+			/**
+			 * @brief 
+			 * Alive cell
+			 */
+			else if(c1=='o'){
+				this->PlaceCell(BLOCK_CELL_ALIVE, x, y);
+				x+=dx;
+			}
+
+		}
+
+		break;
+		/**
+		 * @brief 
+		 * Reading a comment
+		 */
+		case 1:{
+			if(c1=='\n'){
+				state = 0;
+			}
+		}
+		break;
+
+		/**
+		 * @brief 
+		 * Reading a number
+		 */
+		case 2:{
+			if(c1>='0' && c1<='9'){
+				n *= 10;
+				n += c1 - '0';
+			}
+			/**
+			 * @brief 
+			 * New line
+			 */
+			else if(c1=='$'){
+				y += n*dy;
+				x = orig_x;
+				state = 0;
+			}
+			/**
+			 * @brief 
+			 * Dead cell
+			 */
+			else if(c1=='b'){
+				for(int i=0;i<n;++i){
+					this->PlaceCell(BLOCK_CELL_DEAD, x, y);
+					x+=dx;
+				}
+				state = 0;
+			}
+			/**
+			 * @brief 
+			 * Alive cell
+			 */
+			else if(c1=='o'){
+				for(int i=0;i<n;++i){
+					this->PlaceCell(BLOCK_CELL_ALIVE, x, y);
+					x+=dx;
+				}
+				state = 0;
+			}
+
+		}
+
+		default:
+			break;
+		}
+
+	}
+	
+	
 }

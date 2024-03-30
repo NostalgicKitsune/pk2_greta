@@ -12,6 +12,8 @@
 #include "game/sprites_handler.hpp"
 #include "game/game.hpp"
 #include <vector>
+#include "episode/episodeclass.hpp"
+#include "system.hpp"
 
 namespace PK2lua{
 
@@ -64,10 +66,21 @@ void AddEventListener(int event_type, sol::object o){
 }
 
 
-void StartLife(){
-    Game->level.StartLife();
+void StartLife(int life_speed){
+    Game->level.StartLife(life_speed);
 }
 
+void PlaceRLE(const std::string& filename, int x, int y, int direction){
+    PFile::Path path = Episode->Get_Dir(filename);
+    if(FindAsset(&path, "rle" PE_SEP)){
+        Game->level.PlaceRLE(path, x, y, direction);        
+    }
+    else{
+        std::ostringstream os;
+        os<<"RLE file \""<<filename<<"\" not found!";
+        throw std::runtime_error(os.str());
+    }
+}
 
 void ExposeGameAPI(sol::state& lua){
 
@@ -127,6 +140,7 @@ void ExposeGameAPI(sol::state& lua){
 
 
     PK2_API["start_life"] = StartLife;
+    PK2_API["place_rle"] = PlaceRLE;
 
     lua["_pk2_api"] = PK2_API;
 }

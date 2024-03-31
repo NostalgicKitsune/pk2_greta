@@ -88,6 +88,7 @@ void DieIfTouchesWall(SpriteClass*s);
 void EvilOne(SpriteClass*s);
 void Chick(SpriteClass*s);
 void Reborn(SpriteClass*s);
+void ElfDestruction(SpriteClass*);
 
 /**
  * @brief 

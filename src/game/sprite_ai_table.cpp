@@ -260,6 +260,8 @@ AI_Table::AI_Table(){
      * 
      */
 
+    Init_AI(AI_ELF_DESTRUCTION, AI_TRIGGER_DEATH, AI_Functions::ElfDestruction);
+
 
     Init_AI(AI_EVIL_ONE, AI_TRIGGER_DEATH, AI_Functions::EvilOne);
     Init_AI(AI_REBORN, AI_TRIGGER_DEATH, AI_Functions::Reborn);

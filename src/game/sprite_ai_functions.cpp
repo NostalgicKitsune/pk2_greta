@@ -927,7 +927,7 @@ void DieIfTouchesWall(SpriteClass*s){
  * AIs triggered on death
  */
 
-void EvilOne(SpriteClass*s){
+void EvilOne(SpriteClass*){
 	PSound::set_musicvolume(0);
 	Game->music_stopped = true;	
 }
@@ -943,6 +943,12 @@ void Reborn(SpriteClass*s){
 	s->removed = false;
 }
 
+void ElfDestruction(SpriteClass*){
+	if(Game->level.LifeStarted()){
+		Game->Show_Info("CIA tortured me! Again!");
+	}
+
+}
 
 /**
  * @brief 

@@ -680,6 +680,16 @@ void PlayingScreen::Loop(){
 
 	if (!Game->paused) {
 
+		if(Game->level.life_speed>0){
+
+			Game->level.life_timer++;
+
+			if(Game->level.life_timer >= Game->level.life_speed){
+				Game->level.UpdateLife();
+				Game->level.life_timer = 0;
+			}
+		}
+
 		Particles_Update();
 
 		if (!Game->level_clear && (!Game->has_time || Game->timeout > 0)) {

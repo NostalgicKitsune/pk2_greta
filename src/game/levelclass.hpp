@@ -203,6 +203,13 @@ class LevelClass {
 
     void StartLife(int life_speed);
     void PlaceRLE(PFile::Path path, int pos_x, int pos_y, int direction);
+    bool LifeStarted()const{
+        return this->life_speed!=0;
+    }
+
+    int life_timer = 0;
+    int life_speed = 0;
+    void UpdateLife();
 
 private:
     static void ReadTiles(PFile::RW& file,
@@ -227,10 +234,7 @@ private:
     void Animate_WaterSurface(int tiles);
     void Animate_Water(int tiles, int water_tiles);
 
-
-    void UpdateLife();
     void PlaceCell(u8 state, int x, int y);
 
     u8       life_buffer[PK2MAP_MAP_SIZE] = {0};
-    int      life_speed = 0;
 };

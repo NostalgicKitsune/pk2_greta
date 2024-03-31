@@ -41,3 +41,4 @@ launcher/*.o
 /mingw/x86_64/PK2/
 
 start.sh
+*autosave

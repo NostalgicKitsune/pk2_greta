@@ -9,7 +9,7 @@
 
 
 #ifndef PK2_VERSION
-#define PK2_VERSION "(Unknown version)"
+#define PK2_VERSION "April Fools 2024"
 #endif
 
 

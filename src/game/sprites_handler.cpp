@@ -343,6 +343,10 @@ void SpritesHandler::addProjectileSprite(PrototypeClass* prototype, double x, do
 
 	SpriteClass* sprite  = this->mCreateSprite(prototype, false, x, y, shooter);
 
+	if(prototype->type==TYPE_GAME_CHARACTER){
+		sprite->damage_timer = 2;
+	}
+
 	sprite->parent_sprite = shooter;
 	sprite->enemy = shooter->enemy;
 

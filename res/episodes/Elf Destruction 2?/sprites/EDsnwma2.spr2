@@ -1,0 +1,187 @@
+{
+    "ai": [
+        6,
+        11,
+        24
+    ],
+    "always_active": false,
+    "ammo1": "",
+    "ammo2": "snowbal2.spr",
+    "animations": {
+        "attack1": {
+            "loop": true,
+            "sequence": [
+                11,
+                12,
+                13,
+                14,
+                14,
+                14,
+                14,
+                15,
+                16,
+                17
+            ]
+        },
+        "attack2": {
+            "loop": true,
+            "sequence": [
+                11,
+                12,
+                13,
+                14,
+                14,
+                14,
+                14,
+                15,
+                16,
+                17
+            ]
+        },
+        "damage": {
+            "loop": false,
+            "sequence": [
+                6
+            ]
+        },
+        "death": {
+            "loop": false,
+            "sequence": [
+                6,
+                6,
+                18,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24
+            ]
+        },
+        "idle": {
+            "loop": true,
+            "sequence": [
+                1,
+                2,
+                3,
+                4,
+                7,
+                8,
+                9,
+                10
+            ]
+        },
+        "jump_down": {
+            "loop": true,
+            "sequence": [
+                1,
+                2,
+                3,
+                4,
+                7,
+                8,
+                9,
+                10
+            ]
+        },
+        "jump_up": {
+            "loop": true,
+            "sequence": [
+                1,
+                2,
+                3,
+                4,
+                7,
+                8,
+                9,
+                10
+            ]
+        },
+        "squat": {
+            "loop": true,
+            "sequence": [
+                1,
+                2,
+                3,
+                4,
+                7,
+                8,
+                9,
+                10
+            ]
+        },
+        "walking": {
+            "loop": true,
+            "sequence": [
+                1,
+                2,
+                3,
+                4,
+                7,
+                8,
+                9,
+                10
+            ]
+        }
+    },
+    "attack1_time": 25,
+    "attack2_time": 25,
+    "bonus": "",
+    "bonus_always": false,
+    "bonuses_number": 0,
+    "can_glide": false,
+    "can_open_locks": false,
+    "can_swim": false,
+    "charge_time": 60,
+    "check_tiles": true,
+    "color": "normal",
+    "damage": 1,
+    "damage_type": 6,
+    "effect": 0,
+    "enemy": true,
+    "energy": 2,
+    "frame": {
+        "height": 57,
+        "pos_x": 1,
+        "pos_y": 1,
+        "width": 55
+    },
+    "frame_rate": 5,
+    "frames_number": 24,
+    "how_destroyed": 9,
+    "immunity_type": 0,
+    "is_transparent": false,
+    "is_wall": false,
+    "is_wall_down": true,
+    "is_wall_left": true,
+    "is_wall_right": true,
+    "is_wall_up": true,
+    "max_jump": 1,
+    "max_speed": 0.0,
+    "name": "snowman -tophat- (ED)",
+    "parallax_type": 0,
+    "picture": "MKN_snw3.bmp",
+    "projectile_charge_time": 0,
+    "random_sound_frequency": true,
+    "score": 30,
+    "size": {
+        "height": 57,
+        "width": 40
+    },
+    "sound_frequency": 22050,
+    "sounds": {
+        "attack1": "EDsnbAtk.wav",
+        "attack2": "EDsnbAtk.wav",
+        "damage": "EDsnmdm1.wav",
+        "destruction": "EDsnmko2.wav",
+        "random": "EDsnmidl.wav",
+        "special1": "",
+        "special2": ""
+    },
+    "transformation": "",
+    "type": 1,
+    "version": "2.0",
+    "vibrates": false,
+    "weight": 0.5
+}

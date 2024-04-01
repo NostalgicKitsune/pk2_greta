@@ -1,0 +1,143 @@
+{
+    "ai": [
+        1,
+        13,
+        21,
+        51,
+        139,
+        91,
+        135
+    ],
+    "always_active": false,
+    "ammo1": "snowbal2.spr",
+    "ammo2": "",
+    "animations": {
+        "attack1": {
+            "loop": true,
+            "sequence": [
+                7,
+                8,
+                2,
+                7
+            ]
+        },
+        "attack2": {
+            "loop": false,
+            "sequence": [
+                7,
+                7,
+                8,
+                2
+            ]
+        },
+        "damage": {
+            "loop": true,
+            "sequence": [
+                1
+            ]
+        },
+        "death": {
+            "loop": false,
+            "sequence": [
+                12
+            ]
+        },
+        "idle": {
+            "loop": false,
+            "sequence": [
+                2
+            ]
+        },
+        "jump_down": {
+            "loop": true,
+            "sequence": [
+                10,
+                10,
+                11,
+                11
+            ]
+        },
+        "jump_up": {
+            "loop": true,
+            "sequence": [
+                7
+            ]
+        },
+        "squat": {
+            "loop": false,
+            "sequence": [
+                13
+            ]
+        },
+        "walking": {
+            "loop": true,
+            "sequence": [
+                3,
+                4,
+                5,
+                6,
+                3
+            ]
+        }
+    },
+    "attack1_time": 20,
+    "attack2_time": 60,
+    "bonus": "key.spr",
+    "bonus_always": true,
+    "bonuses_number": 1,
+    "boss": false,
+    "can_glide": true,
+    "can_open_locks": false,
+    "can_swim": false,
+    "charge_time": 20,
+    "check_tiles": true,
+    "color": "normal",
+    "damage": 1,
+    "damage_type": 1,
+    "effect": 0,
+    "enemy": true,
+    "energy": 10,
+    "frame": {
+        "height": 55,
+        "pos_x": 1,
+        "pos_y": 1,
+        "width": 43
+    },
+    "frame_rate": 5,
+    "frames_number": 21,
+    "how_destroyed": 9,
+    "immunity_type": 6,
+    "is_transparent": false,
+    "is_wall": false,
+    "is_wall_down": true,
+    "is_wall_left": true,
+    "is_wall_right": true,
+    "is_wall_up": true,
+    "max_jump": 26,
+    "max_speed": 3.0,
+    "name": "Elf-Destruction",
+    "parallax_type": 0,
+    "picture": "elf.png",
+    "projectile_charge_time": 0,
+    "random_sound_frequency": true,
+    "score": 100,
+    "size": {
+        "height": 55,
+        "width": 43
+    },
+    "sound_frequency": 22050,
+    "sounds": {
+        "attack1": "elf_throw.wav",
+        "attack2": "elf_kick2.wav",
+        "damage": "elf_damage.wav",
+        "destruction": "elf_death.wav",
+        "random": "",
+        "special1": "",
+        "special2": ""
+    },
+    "transformation": "",
+    "type": 1,
+    "version": "2.0",
+    "vibrates": false,
+    "weight": 1.0
+}

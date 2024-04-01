@@ -1,0 +1,141 @@
+{
+    "ai": [
+        35,
+        23,
+        144
+    ],
+    "always_active": false,
+    "ammo1": "",
+    "ammo2": "",
+    "animations": {
+        "attack1": {
+            "loop": false,
+            "sequence": [
+                2,
+                3,
+                4,
+                5,
+                6
+            ]
+        },
+        "attack2": {
+            "loop": false,
+            "sequence": [
+                2,
+                3,
+                4,
+                5,
+                6
+            ]
+        },
+        "damage": {
+            "loop": false,
+            "sequence": [
+                2,
+                3,
+                4,
+                5,
+                6
+            ]
+        },
+        "death": {
+            "loop": false,
+            "sequence": [
+                2,
+                3,
+                4,
+                5,
+                6
+            ]
+        },
+        "idle": {
+            "loop": true,
+            "sequence": [
+                1
+            ]
+        },
+        "jump_down": {
+            "loop": false,
+            "sequence": [
+                1
+            ]
+        },
+        "jump_up": {
+            "loop": false,
+            "sequence": [
+                1
+            ]
+        },
+        "squat": {
+            "loop": false,
+            "sequence": [
+                1
+            ]
+        },
+        "walking": {
+            "loop": false,
+            "sequence": [
+                1
+            ]
+        }
+    },
+    "attack1_time": 60,
+    "attack2_time": 60,
+    "bonus": "",
+    "bonus_always": false,
+    "bonuses_number": 1,
+    "can_glide": false,
+    "can_open_locks": false,
+    "can_swim": false,
+    "charge_time": 15,
+    "check_tiles": true,
+    "color": "normal",
+    "damage": 1,
+    "damage_type": 6,
+    "effect": 0,
+    "enemy": false,
+    "energy": 1,
+    "frame": {
+        "height": 16,
+        "pos_x": 485,
+        "pos_y": 139,
+        "width": 16
+    },
+    "frame_rate": 2,
+    "frames_number": 6,
+    "how_destroyed": 16,
+    "immunity_type": 0,
+    "is_transparent": false,
+    "is_wall": false,
+    "is_wall_down": false,
+    "is_wall_left": false,
+    "is_wall_right": false,
+    "is_wall_up": false,
+    "max_jump": 100,
+    "max_speed": 4.0,
+    "name": "snowball -throwable-",
+    "parallax_type": 0,
+    "picture": "MKN_snw1.bmp",
+    "projectile_charge_time": 100,
+    "random_sound_frequency": true,
+    "score": 0,
+    "size": {
+        "height": 14,
+        "width": 14
+    },
+    "sound_frequency": 22050,
+    "sounds": {
+        "attack1": "",
+        "attack2": "",
+        "damage": "",
+        "destruction": "EDsnbHit.wav",
+        "random": "",
+        "special1": "",
+        "special2": ""
+    },
+    "transformation": "",
+    "type": 3,
+    "version": "2.0",
+    "vibrates": false,
+    "weight": 0.5
+}

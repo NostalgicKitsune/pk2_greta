@@ -1,0 +1,132 @@
+{
+    "ai": [
+        6,
+        16,
+        18,
+        7,
+        8,
+        19,
+        37,
+        137,
+        39
+    ],
+    "always_active": false,
+    "ammo1": "snowbalB.spr",
+    "ammo2": "",
+    "animations": {
+        "attack1": {
+            "loop": true,
+            "sequence": [
+                3
+            ]
+        },
+        "attack2": {
+            "loop": true,
+            "sequence": [
+                3
+            ]
+        },
+        "damage": {
+            "loop": false,
+            "sequence": [
+                4
+            ]
+        },
+        "death": {
+            "loop": false,
+            "sequence": [
+                4
+            ]
+        },
+        "idle": {
+            "loop": true,
+            "sequence": [
+                1
+            ]
+        },
+        "jump_down": {
+            "loop": true,
+            "sequence": [
+                3
+            ]
+        },
+        "jump_up": {
+            "loop": true,
+            "sequence": [
+                3
+            ]
+        },
+        "squat": {
+            "loop": true,
+            "sequence": [
+                3
+            ]
+        },
+        "walking": {
+            "loop": true,
+            "sequence": [
+                1,
+                2
+            ]
+        }
+    },
+    "attack1_time": 20,
+    "attack2_time": 20,
+    "bonus": "PRhexpGR.spr",
+    "bonus_always": true,
+    "bonuses_number": 1,
+    "can_glide": false,
+    "can_open_locks": false,
+    "can_swim": false,
+    "charge_time": 30,
+    "check_tiles": true,
+    "color": "normal",
+    "damage": 2,
+    "damage_type": 6,
+    "effect": 0,
+    "enemy": true,
+    "energy": 10,
+    "frame": {
+        "height": 110,
+        "pos_x": 1,
+        "pos_y": 179,
+        "width": 101
+    },
+    "frame_rate": 5,
+    "frames_number": 4,
+    "how_destroyed": 9,
+    "immunity_type": 0,
+    "is_transparent": false,
+    "is_wall": false,
+    "is_wall_down": true,
+    "is_wall_left": true,
+    "is_wall_right": true,
+    "is_wall_up": true,
+    "max_jump": 1,
+    "max_speed": 4.0,
+    "name": "Mr Big (ED)",
+    "parallax_type": 0,
+    "picture": "MKN_snw3.bmp",
+    "projectile_charge_time": 10,
+    "random_sound_frequency": true,
+    "score": 500,
+    "size": {
+        "height": 110,
+        "width": 98
+    },
+    "sound_frequency": 5050,
+    "sounds": {
+        "attack1": "EDsnbAtk.wav",
+        "attack2": "EDsnbAtk.wav",
+        "damage": "EDsnmdm1.wav",
+        "destruction": "EDsnmko3.wav",
+        "random": "EDsnmidl.wav",
+        "special1": "",
+        "special2": ""
+    },
+    "transformation": "",
+    "type": 1,
+    "version": "2.0",
+    "vibrates": false,
+    "weight": 0.0
+}

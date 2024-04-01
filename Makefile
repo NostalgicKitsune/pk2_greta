@@ -33,7 +33,7 @@ LDFLAGS += $(shell pkg-config sdl2 libzip lua --libs) -lSDL2_mixer -lSDL2_image
 # Version string
 PK2_VERSION = $(shell git log -1 --pretty=format:"%s" | grep -o 'v[0-9]\+\.[0-9]\+')
 ifeq ($(PK2_VERSION),)
-	PK2_VERSION = "April_Fools_2024"
+	PK2_VERSION = "X1"
 endif
 
 
